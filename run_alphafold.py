@@ -185,6 +185,7 @@ def predict_structure(
 
   # Run the models.
   num_models = len(model_runners)
+  #num_models = 1
   for model_index, (model_name, model_runner) in enumerate(
       model_runners.items()):
     logging.info('Running model %s on %s', model_name, fasta_name)
@@ -400,7 +401,7 @@ def main(argv):
         fasta_name=fasta_name,
         output_dir_base=FLAGS.output_dir,
         data_pipeline=data_pipeline,
-        model_runners=model_runners,
+        model_runners=dict(model_1_pred_0=model_runners["model_1_pred_0"]),
         amber_relaxer=amber_relaxer,
         benchmark=FLAGS.benchmark,
         random_seed=random_seed)
